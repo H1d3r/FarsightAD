@@ -3764,7 +3764,7 @@ S-1-5-21-898253280-1155539434-3291038768-519
         Else {
             Write-Host $Domain.ParentDomain
             $RootDomainName = $(Get-ADForestCustom).RootDomain
-            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName)" -Properties securityIdentifier).securityIdentifier
+            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName))" -Properties securityIdentifier).securityIdentifier
         }
     }
     catch {
@@ -3926,7 +3926,7 @@ S-1-5-9
         }
         Else {
             $RootDomainName = $(Get-ADForestCustom).RootDomain
-            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName)" -Properties securityIdentifier).securityIdentifier
+            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName))" -Properties securityIdentifier).securityIdentifier
         }
     }
     catch {
@@ -7805,7 +7805,7 @@ CSV / JSON file written to disk.
         }
         Else {
             $RootDomainName = $(Get-ADForestCustom).RootDomain
-            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName)" -Properties securityIdentifier).securityIdentifier
+            $ForestSID = $(Get-ADObject -LDAPFilter "(&(ObjectClass=trustedDomain)(Name=$RootDomainName))" -Properties securityIdentifier).securityIdentifier
         }
     }
     catch {
