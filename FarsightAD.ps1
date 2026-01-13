@@ -11076,18 +11076,23 @@ CSV / JSON file written to disk.
             $TargetDomain = $_
             $NetConnectionResult = Test-TcpConnection $TargetDomain 9389
             If ($NetConnectionResult) {
-                $Trusts = Get-ADTrust -Server $TargetDomain -Filter * -Properties Name,Direction,DisallowTransivity,SIDFilteringQuarantined,SIDFilteringForestAware,TGTDelegation
+                $Trusts = Get-ADTrust -Server $TargetDomain -Filter * -Properties Name, TrustType, IntraForest, Direction, IsTreeRoot, IsTreeParent, DisallowTransivity, SIDFilteringQuarantined, SIDFilteringForestAware, TGTDelegation, TrustAttributes
                               
                 $null = foreach ($Trust in $Trusts) {
                     $Output.Add([PSCustomObject]@{
                         ExecutingFromDomain = $DomainName
                         Domain = If ($TargetDomain -eq $Server) { $DomainName } Else { $TargetDomain }
                         TrustPartnerDomain = $Trust["Name"].Value
+						TrustType = $Trust["TrustType"].Value
+						IntraForest = $Trust["IntraForest"].Value
                         Direction = $Trust["Direction"].Value
+						IsTreeRoot = $Trust["IsTreeRoot"].Value
+						IsTreeParent = $Trust["IsTreeParent"].Value
                         DisallowTransivity = $Trust["DisallowTransivity"].Value
                         SIDFilteringQuarantined = $Trust["SIDFilteringQuarantined"].Value
                         SIDFilteringForestAware = $Trust["SIDFilteringForestAware"].Value
                         TGTDelegation = $Trust["TGTDelegation"].Value
+						TrustAttributes = $Trust["TrustAttributes"].Value
                     })
                 }
             }
