@@ -57,7 +57,7 @@ Cmdlet          Get-ADObject                                       1.0.X.X    Ac
 ```
 . .\FarsightAD.ps1
 
-Invoke-ADHunting [-Server <DC_IP | DC_HOSTNAME>] [-Credential <PS_CREDENTIAL>] [-ADDriveName <AD_DRIVE_NAME>] [-OutputFolder <OUTPUT_FOLDER>] [-ExportType <CSV | JSON>]
+Invoke-ADHunting [-Server <DC_IP | DC_HOSTNAME>] [-Credential <PS_CREDENTIAL>] [-ADDriveName <AD_DRIVE_NAME>] [-OutputFolder <OUTPUT_FOLDER>] [-OutputType <CSV | JSON>]
 ```
 
 ## AD Hunting cmdlets
